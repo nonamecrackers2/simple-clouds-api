@@ -1,0 +1,74 @@
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+version = proj_version
+group = group_id
+
+base {
+    archivesName = proj_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
+
+minecraft {
+    mappings channel: mapping_channel, version: mapping_version
+}
+
+repositories {
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+}
+
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes([
+                'Specification-Title'     : proj_id,
+                'Specification-Vendor'    : authors,
+                'Specification-Version'   : '1', // We are version 1 of ourselves
+                'Implementation-Title'    : project.name,
+                'Implementation-Version'  : project.jar.archiveVersion,
+                'Implementation-Vendor'   : authors,
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                'FMLModType'              : 'GAMELIBRARY'
+        ])
+    }
+
+    finalizedBy 'reobfJar'
+}
+
+java {
+	withSourcesJar()
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+        	group = authors
+        	artifactId = "${proj_id}-forge"
+            artifact jar
+            artifact sourcesJar
+        }
+    }
+    repositories {
+        maven {
+		    name "nonamecrackers2Maven"
+		    url "https://maven.nonamecrackers2.dev/${maven_dir}"
+		    credentials(PasswordCredentials)
+		    authentication {
+		    	basic(BasicAuthentication)
+		    }
+		}
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
