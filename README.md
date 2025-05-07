@@ -6,6 +6,9 @@ This API is designed to allow mod developers to interact with Simple Clouds with
 
 > [!NOTE]
 > Documentation is currently limited.
+> 
+> Currently only compatible with Simple Clouds 0.7 and above.
+> 
 > For a list of full versions, please see the [maven repo](https://maven.nonamecrackers2.dev/#/releases/nonamecrackers2)
 
 ## Usage
