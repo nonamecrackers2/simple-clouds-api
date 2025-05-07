@@ -5,7 +5,8 @@ A fairly basic API for the [Simple Clouds](https://github.com/nonamecrackers2/si
 This API is designed to allow mod developers to interact with Simple Clouds without requiring it as a dependency, which can be useful in situations where a mod wants to add an optional compatibility feature without always having Simple Clouds as a dependency in their mod development environment.
 
 > [!NOTE]
-> Documentation is currently limited
+> Documentation is currently limited.
+> For a list of full versions, please see the [maven repo](https://maven.nonamecrackers2.dev/#/releases/nonamecrackers2)
 
 ## Usage
 
