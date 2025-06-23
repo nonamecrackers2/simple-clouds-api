@@ -8,7 +8,7 @@ import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
 public class ScAPIInternal
 {
 	protected static @Nullable SimpleCloudsAPI instance;
-	protected static ArtifactVersion version = new DefaultArtifactVersion("1.0.1");
+	protected static ArtifactVersion version = new DefaultArtifactVersion("1.1");
 	
 	public static void _setApi(SimpleCloudsAPI api)
 	{

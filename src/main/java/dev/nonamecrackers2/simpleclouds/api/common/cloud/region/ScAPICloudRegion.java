@@ -41,6 +41,10 @@ public interface ScAPICloudRegion
 	
 	void moveToWorldPos(float x, float z);
 	
+	float getInitialRadius();
+	
+	float getInitialWorldRadius();
+	
 	float getRadius(float partialTick);
 	
 	float getRadius();
