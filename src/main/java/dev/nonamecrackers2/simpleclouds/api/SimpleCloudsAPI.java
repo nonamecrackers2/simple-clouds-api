@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import org.apache.maven.artifact.versioning.ArtifactVersion;
 
+import dev.nonamecrackers2.simpleclouds.api.common.ScAPIHooks;
 import dev.nonamecrackers2.simpleclouds.api.common.cloud.region.ScAPICloudRegion;
 import dev.nonamecrackers2.simpleclouds.api.common.world.ScAPICloudManager;
 import net.minecraft.resources.ResourceLocation;
@@ -25,6 +26,8 @@ public interface SimpleCloudsAPI
 	ArtifactVersion getSimpleCloudsVersion();
 	
 	ScAPICloudManager getCloudManager(Level level);
+	
+	ScAPIHooks getHooks();
 	
 	ScAPICloudRegion createCloudRegion(ResourceLocation cloudTypeId, Vec2 movementDirection, float maxSpeed, float accelerationFactor, float posX, float posZ, float radius, float rotation, float stretchFactor, int existsForTicks, int growTicks, int orderWeight);
 }
