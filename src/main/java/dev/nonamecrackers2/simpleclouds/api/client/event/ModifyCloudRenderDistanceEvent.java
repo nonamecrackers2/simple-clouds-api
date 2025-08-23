@@ -1,6 +1,6 @@
 package dev.nonamecrackers2.simpleclouds.api.client.event;
 
-import net.minecraftforge.eventbus.api.Event;
+import net.neoforged.bus.api.Event;
 
 public class ModifyCloudRenderDistanceEvent extends Event
 {

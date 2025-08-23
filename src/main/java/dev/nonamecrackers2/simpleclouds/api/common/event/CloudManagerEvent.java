@@ -2,7 +2,7 @@ package dev.nonamecrackers2.simpleclouds.api.common.event;
 
 import dev.nonamecrackers2.simpleclouds.api.common.world.ScAPICloudManager;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.eventbus.api.Event;
+import net.neoforged.bus.api.Event;
 
 public abstract class CloudManagerEvent extends Event
 {

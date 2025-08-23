@@ -1,8 +1,11 @@
 plugins {
-    id 'eclipse'
-    id 'idea'
+    id 'java-library'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'net.neoforged.gradle.userdev' version '7.0.192'
+}
+
+tasks.named('wrapper', Wrapper).configure {
+    distributionType = Wrapper.DistributionType.BIN
 }
 
 version = proj_version
@@ -12,19 +15,19 @@ base {
     archivesName = proj_id
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-
-println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
-
-minecraft {
-    mappings channel: mapping_channel, version: mapping_version
-}
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 repositories {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    implementation "net.neoforged:neoforge:${neo_version}"
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
 }
 
 tasks.named('jar', Jar).configure {
@@ -40,8 +43,6 @@ tasks.named('jar', Jar).configure {
                 'FMLModType'              : 'GAMELIBRARY'
         ])
     }
-
-    finalizedBy 'reobfJar'
 }
 
 java {
@@ -52,7 +53,7 @@ publishing {
     publications {
         register('mavenJava', MavenPublication) {
         	group = authors
-        	artifactId = "${proj_id}-forge"
+        	artifactId = "${proj_id}-neoforge"
             artifact jar
             artifact sourcesJar
         }
@@ -71,4 +72,11 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
 }

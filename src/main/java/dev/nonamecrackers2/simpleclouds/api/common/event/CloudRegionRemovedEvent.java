@@ -4,7 +4,7 @@ import javax.annotation.Nullable;
 
 import dev.nonamecrackers2.simpleclouds.api.common.cloud.region.ScAPICloudRegion;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.eventbus.api.Event;
+import net.neoforged.bus.api.Event;
 
 public class CloudRegionRemovedEvent extends Event
 {
