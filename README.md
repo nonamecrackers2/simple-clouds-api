@@ -22,9 +22,9 @@ maven {
 }
 
 dependencies {
-	implementation fg.deobf("nonamecrackers2:simplecloudsapi-forge:${simpleclouds_api_version}")
-    	implementation fg.deobf("nonamecrackers2:simpleclouds:${simpleclouds_version}")
-	implementation fg.deobf("nonamecrackers2:crackerslib-forge:${crackerslib_version}")
+	implementation "nonamecrackers2:simplecloudsapi-forge:${simpleclouds_api_version}"
+    implementation "nonamecrackers2:simpleclouds:${simpleclouds_version}"
+	implementation "nonamecrackers2:crackerslib-forge:${crackerslib_version}"
 }
 ```
 
