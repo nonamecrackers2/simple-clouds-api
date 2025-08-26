@@ -41,7 +41,7 @@ public interface ScAPICloudGenerator
 	
 	boolean api_removeClouds(Predicate<? extends ScAPICloudRegion> predicate);
 	
-	boolean api_removeCloudsCount(Predicate<? extends ScAPICloudRegion> predicate);
+	int api_removeCloudsCount(Predicate<? extends ScAPICloudRegion> predicate);
 	
 	boolean addCloudToTop(ScAPICloudRegion region);
 	
